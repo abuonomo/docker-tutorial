@@ -10,7 +10,8 @@ I recommend reading the example on the github page because some text have hyperl
 # Table of Contents
 1. [Basic](#basics)
 2. [Run](#run)
-2. [Dockerfile](#dockerfile)
+3. [Dockerfile](#dockerfile)
+4. [Volumes](#volumes)
 
 ## Basics
 
@@ -87,3 +88,9 @@ docker run tutorial:latest echo 'Bad, docker!'
 ```
 
 *note: We can run echo because the ENTRYPOINT for the image has defaulted to bash. This need not always be the case. Your ENTRYPOINT could also be python if you wanted it to. Read about ENTRYPOINTS [here](https://docs.docker.com/engine/reference/builder/#entrypoint).*
+
+## Volumes
+
+If you want to exchange data between the docker container and your machine or you want to persist data made in the docker container, use volumes. 
+
+Check out [this Dockerfile](#)
