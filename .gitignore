@@ -1,2 +1,2 @@
 /volume_example/data/*
-!*/volume_example/data/sometext.txt
+!/volume_example/data/sometext.txt
