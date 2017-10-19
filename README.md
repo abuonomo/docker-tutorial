@@ -5,6 +5,7 @@ Docker containers enable greater control over project dependencies, increasing p
 This document is about how to use docker. It does not describe how docker containers work or when to use them.
 
 Clone this repo to run through the example.
+I recommend reading the example on the github page because some text have hyperlinks. 
 
 # Table of Contents
 1. [Basic](#basics)
@@ -65,3 +66,17 @@ Now might be a good time to play around with the "docker ps", "docker ps -a" and
 
 In the previous example we used the ubuntu images which was pulled from docker hub. We can also define our own images using a Dockerfile, like [this one here](./example/Dockerfile)
 
+The comments in this Dockerfile explain a bit more about how a dockerfile works.
+
+To build the image defined by this Dockerfile, go to the root directory of the dockerfile and run:
+```
+docker build -t tutorial:latest .
+```
+This tells docker to build the image from the current directory(Hence the '.'), and to tag it with the name "tutorial" and version "latest". You do not need the -t (tag) flag but it helps to keep things organized. 
+
+Running "docker images" you will see your image created by this Dockerfile. Now try running: 
+```
+docker run tutorial:latest
+```
+
+You should see "yay docker".
