@@ -80,3 +80,10 @@ docker run tutorial:latest
 ```
 
 You should see "yay docker".
+
+You can override the CMD instruction at the end of the Dockerfile by including your down instruction via the command line, for example:
+```
+docker run tutorial:latest echo 'Bad, docker!'
+```
+
+*note: We can run echo because the ENTRYPOINT for the image has defaulted to bash. This need not always be the case. Your ENTRYPOINT could also be python if you wanted it to. Read about ENTRYPOINTS [here](https://docs.docker.com/engine/reference/builder/#entrypoint).*
