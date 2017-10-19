@@ -93,4 +93,4 @@ docker run tutorial:latest echo 'Bad, docker!'
 
 If you want to exchange data between the docker container and your machine or you want to persist data made in the docker container, use volumes. 
 
-Check out [this Dockerfile](#volumes_example/Dockerfile).
+Check out [this Dockerfile](#volume_example/Dockerfile).
