@@ -21,5 +21,5 @@ RUN mkdir data
 
 CMD curl https://en.wikipedia.org/wiki/Whale >> ./data/whale.html
 # Because the WORKDIR command specifies that we are working the the /home/
-# directory of the container. The CMD above writes google.html to the location
-# /home/data/google.html.
+# directory of the container. The CMD above writes whale.html to the location
+# /home/data/whale.html.

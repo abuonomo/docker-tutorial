@@ -168,7 +168,7 @@ docker volume ls
 
 Once project becomes more complex and require containers which depend upon one another, it becomes necessary to use docker-compose. 
 
-Navigate to the [compose_example folder](compose_example). Take a look at the [docker-compose.yml](compose_example/docker-compose.yml)  file therein. This file provides instructures for running two docker containers based on two images (whose build definitions reside in the flask and nginx folders' respective Dockerfiles).
+Navigate to the [compose_example folder](compose_example). Take a look at the [docker-compose.yml](compose_example/docker-compose.yml)  file therein. This file provides instructions for running two docker containers based on two images (whose build definitions reside in the flask and nginx folders' respective Dockerfiles).
 
 Viewing the docker-compose.yml file, you will see many arguments for two different services. These two services map to two containers. The two services/containers are linked together on a container network. 
 
