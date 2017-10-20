@@ -13,6 +13,7 @@ I recommend reading this README on the github page because some text have hyperl
 3. [Dockerfile](#dockerfile)
 4. [Volumes](#volumes)
 5. [Compose](#compose)
+6. [Comments](#comments)
 
 ## Basics
 
@@ -199,3 +200,9 @@ If you want to see its logs, run:
 ```
 docker-compose logs 
 ```
+
+## Comments
+
+You may notice that there are a lot of ways to do the same thing when you have the option of using Dockerfiles, the command line "docker run" commands, and docker-compose.
+
+Personally, I tend to define depenencies in Dockerfiles. I run simple one-off conatiners using "docker run". If I know I'm going to be running a container or network of containers multiple times with the same command line parameteres,I use docker-compose. I usually define volumes and networking parameteres(expose and ports) in docker-compose, as opposed to using the Dockerfile. Find what works for you and try to be consistent. Otherwise you can lose track of where you defined what.
