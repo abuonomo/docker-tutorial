@@ -14,8 +14,8 @@ I recommend reading this README on the github page because some text have hyperl
 4. [Volumes](#volumes)
 5. [Compose](#compose)
 6. [Comments](#comments)
-6. [Management](#comments)
-6. [Misc](#comments)
+7. [Management](#comments)
+8. [Misc](#comments)
 
 ## Basics
 
@@ -210,7 +210,7 @@ You may notice that there are a lot of ways to do the same thing when you have t
 Personally, I tend to define depenencies in Dockerfiles. I run simple one-off conatiners using "docker run". If I know I'm going to be running a container or network of containers multiple times with the same command line parameteres,I use docker-compose. I usually define volumes and networking parameteres(expose and ports) in docker-compose, as opposed to using the Dockerfile. Find what works for you and try to be consistent. Otherwise you can lose track of where you defined what.
 
 
-# Management
+## Management
 You may find that, as you experiment with docker, you build up a big mess of images and volumes.
 
 Keep your container environment clean by tagging your images and removing containers that you are not longer using. "docker rm" (for removing containers) and "docker rmi" (for removing images) are your friends.   
