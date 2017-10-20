@@ -14,6 +14,8 @@ I recommend reading this README on the github page because some text have hyperl
 4. [Volumes](#volumes)
 5. [Compose](#compose)
 6. [Comments](#comments)
+6. [Management](#comments)
+6. [Misc](#comments)
 
 ## Basics
 
@@ -206,3 +208,24 @@ docker-compose logs
 You may notice that there are a lot of ways to do the same thing when you have the option of using Dockerfiles, the command line "docker run" commands, and docker-compose.
 
 Personally, I tend to define depenencies in Dockerfiles. I run simple one-off conatiners using "docker run". If I know I'm going to be running a container or network of containers multiple times with the same command line parameteres,I use docker-compose. I usually define volumes and networking parameteres(expose and ports) in docker-compose, as opposed to using the Dockerfile. Find what works for you and try to be consistent. Otherwise you can lose track of where you defined what.
+
+
+# Management
+You may find that, as you experiment with docker, you build up a big mess of images and volumes.
+
+Keep your container environment clean by tagging your images and removing containers that you are not longer using. "docker rm" (for removing containers) and "docker rmi" (for removing images) are your friends.   
+
+See a lot of images tagged <none>:<none>? You may have too many dangling images. Remove them with:
+```
+docker rmi $(docker images --quiet --filter "dangling=true")
+```
+
+## Misc
+
+Suppose you want to move all data from one named volume v0 to named voluem v1. Observe:
+```
+docker run --rm -v v1:/move_to_here/ -v v0:/move_from_here ubuntu cp -r /move_from_here/* /move_to_here/
+```
+In plain Enlish: 
+
+Docker! Mount my named volumes v0 and v1 to the respective locations /move_from_here/ and /move_to_here/ in a container running the latest  ubuntu image. Then, in the ubuntu container, execute command to recursively copy all contents from /move_from_here/ to /move_to_here/...please. Once you do that, remove the container (the --rm flag).
