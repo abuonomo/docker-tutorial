@@ -94,3 +94,65 @@ docker run tutorial:latest echo 'Bad, docker!'
 If you want to exchange data between the docker container and your machine or you want to persist data made in the docker container, use volumes. 
 
 Check out [this Dockerfile](volume_example/Dockerfile).
+
+Now navigate to the volume_example folder and build the image defined therein:
+```
+docker build -t volume_tutorial .
+```
+Now enter into the container, and run bash interactively:
+```
+docker run -it volume_tutorial:latest bash
+```
+Now, while in the container, navigate to the data folder and write a file there:
+```
+echo 'persist' > please_persist.txt
+```
+Now exit your container. Re-enter the container using the 
+```
+docker run -it volume_tutorial:latest bash
+```
+Again navigate to the /home/data/ folder (you should be placed in the home directory when you enter the container because of the WORKDIR command in the Dockerfile). You will notice that persist_please.txt is not there. That is because containers are ephemeral. 
+
+Now let's mount a volume to our container so that data will persist. 
+You should be in the <project-root>/volume_example/ directory on your system. Now run:
+```
+docker run -it -v $(pwd)/data/:/home/data/ volume_example:latest bash
+```
+This commands makes it such that the system's <project_root>/volume_example/data directory and the container's /home/data/ directory are synced up. Changes made in one are reflected in the other. Therefore, changes made in this folder of the container persist after the container has stopped running. 
+
+Navigate to the /home/data/ folder in the container, and notice that sometext.txt is there. This is a file synced from the system's <project_root>/volume_example/data folder.
+
+Now write a file there:
+```
+echo 'persist, please!' > please_persist.txt
+```
+Now exit the container and navigate to the synced folder on the system (<project_root>/volume_example/data). You will notice that please_persist.txt is there. 
+
+Now, allow the Dockerfile to run its build in command (defined in Dockerfile) without being overridden by bash (passed on command line).
+```
+docker run volume_example:latest
+```
+You will notice that the container executes a curl command. However you navigate to the <project_root>/volume_example/data folder, you will not see the html there. 
+
+Run it again, this time mounting the data folder to a volume:
+```
+docker run -v $(pwd)/data/:/home/data/ volume_example:latest
+```
+*Note: we do not need the -it flags because we do not require an interactive session in the container.*
+
+Note that volumes need not be synced with a system folder. You can also make named volumes like so:
+```
+docker run -v volume_example_volume0:/home/data/ volume_example:latest
+```
+You will not see whale.html with you navigate to your local data folder, but you will see it when you start the container again and navigate to it's /home/data folder. 
+```
+docker run -it -v volume_example_volume0:/home/data volume_example:latest bash
+cd data
+```
+Then exit the container.
+
+To see a list of volumes in your docker environment, use:
+```
+docker volume ls
+```
+
