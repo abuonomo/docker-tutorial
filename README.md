@@ -184,7 +184,7 @@ To bring the network down, run:
 docker-compse down
 ```
 
-I suggest following the given hyperlinks and reading the comments in the files provided (including docker_compose.yml(compose_example/docker_compose.yml) and nginx.conf(compose_example/nginx/nginx.conf). Also take a look at the Dockerfiles which define how the images are built for the flask and nginx services/containers.
+I suggest following the given hyperlinks and reading the comments in the files provided (including docker_compose.yml(compose_example/docker-compose.yml) and nginx.conf(compose_example/nginx/nginx.conf). Also take a look at the Dockerfiles which define how the images are built for the flask and nginx services/containers.
 
 You can also run the network as a daemon (in the background) by running:
 ```
