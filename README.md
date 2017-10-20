@@ -5,7 +5,7 @@ Docker containers enable greater control over project dependencies, increasing p
 This document is about how to use docker. It does not describe how docker containers work or when to use them.
 
 Clone this repo to run through the example.
-I recommend reading the example on the github page because some text have hyperlinks. 
+I recommend reading this README on the github page because some text have hyperlinks to specific files.
 
 # Table of Contents
 1. [Basic](#basics)
@@ -28,6 +28,10 @@ apt-get install curl
 ```
 Hooray. Now you have curl in your container.
 Now you exit you container. Then you start it up again. Curl is no long there. 
+
+This will make more sense as you go through this tutorial.
+
+Here are some basic commands:
 
 To list images, run:
 ```
