@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+    flask:
+        build: flask
+        environment:
+            - PORT=8000
+            - FLASK_APP=app.py
+        expose:
+            - 8000
+        ports:
+            - 8000:8000 
+        command: flask run

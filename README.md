@@ -12,6 +12,7 @@ I recommend reading the example on the github page because some text have hyperl
 2. [Run](#run)
 3. [Dockerfile](#dockerfile)
 4. [Volumes](#volumes)
+5. [Compose](#compose)
 
 ## Basics
 
@@ -155,4 +156,6 @@ To see a list of volumes in your docker environment, use:
 ```
 docker volume ls
 ```
+
+## Compose
 
