@@ -159,3 +159,29 @@ docker volume ls
 
 ## Compose
 
+Once project becomes more complex and require containers which depend upon one another, it becomes necessary to use docker-compose. 
+
+Navigate to the [compose_example folder](compose_example). Take a look at the [docker-compose.yml](compose_example/docker-compose.yml)  file therein. This file provides instructures for running two docker containers based on two images (whose build definitions reside in the flask and nginx folders' respective Dockerfiles).
+
+Viewing the docker-compose.yml file, you will see many arguments for two different services. These two services map to two containers. The two services/containers are linked together on a container network. 
+
+The flask service runs [a simple flask app](compose_example/flask/app.py) and exposes its port 8000 to the container network.  
+
+The nginx service uses [this config file](compose_example/nginx/nginx.config) to define a reverse proxy which listens to the port 8000 of the flask container and serves it on port 81 of the nginx container. The [docker-compose file](compose_example/docker_compose.yml) then maps nginx's port 81 to port 80 of your system. Then you can see the flask app running on localhost:80.
+
+To build the container network, navigate to <project_root>/compose_example. Then run:
+```
+docker-compose build
+```
+This uses the docker-compose.yml file to build the network. Now to get the network running, use:
+```
+docker-compose up
+```
+Once all of the containers are up, you should be able to navigate to localhost:80 to see the simple flask app's output. 
+
+To bring the network down, run:
+```
+docker-compse down
+```
+
+I suggest following the given hyperlinks and reading the comments in the files provided (including docker_compose.yml(compose_example/docker_compose.yml) and nginx.conf(compose_example/nginx/nginx.conf). Also take a look at the Dockerfiles which define how the images are built for the flask and nginx services/containers.

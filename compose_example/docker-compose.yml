@@ -1,4 +1,5 @@
 version: '3'
+# Keep in mind the version number.
 
 services:
 # Each service here (flask and nginx) is a different container.
@@ -32,6 +33,9 @@ services:
         # Nor will you see if from your system on flask:8000. It can only be 
         # seen by the other containers in the network.
             - 8000
+            # Also note that it is written "- 8000". NOT "-8000".
+            # Put a space after the dash for all arguments in the docker-compose
+            # file or you might have issues getting it to work.
         command: flask run
         # Overrides command in Dockerfile.
     
