@@ -65,7 +65,7 @@ Now might be a good time to play around with the "docker ps", "docker ps -a" and
 
 ## Dockerfile
 
-In the previous example we used the ubuntu images which was pulled from docker hub. We can also define our own images using a Dockerfile, like [this one here](./python_example/Dockerfile)
+In the previous example we used the ubuntu images which was pulled from docker hub. We can also define our own images using a Dockerfile, like [this one here](#./python_example/Dockerfile)
 
 The comments in this Dockerfile explain a bit more about how a dockerfile works.
 
