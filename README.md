@@ -167,7 +167,7 @@ Viewing the docker-compose.yml file, you will see many arguments for two differe
 
 The flask service runs [a simple flask app](compose_example/flask/app.py) and exposes its port 8000 to the container network.  
 
-The nginx service uses [this config file](compose_example/nginx/nginx.conf) to define a reverse proxy which listens to the port 8000 of the flask container and serves it on port 81 of the nginx container. The [docker-compose file](compose_example/docker_compose.yml) then maps nginx's port 81 to port 80 of your system. Then you can see the flask app running on localhost:80.
+The nginx service uses [this config file](compose_example/nginx/nginx.conf) to define a reverse proxy which listens to the port 8000 of the flask container and serves it on port 81 of the nginx container. The [docker-compose file](compose_example/docker-compose.yml) then maps nginx's port 81 to port 80 of your system. Then you can see the flask app running on localhost:80.
 
 To build the container network, navigate to <project_root>/compose_example. Then run:
 ```
@@ -184,7 +184,7 @@ To bring the network down, run:
 docker-compse down
 ```
 
-I suggest following the given hyperlinks and reading the comments in the files provided (including docker_compose.yml(compose_example/docker-compose.yml) and nginx.conf(compose_example/nginx/nginx.conf). Also take a look at the Dockerfiles which define how the images are built for the flask and nginx services/containers.
+I suggest following the given hyperlinks and reading the comments in the files provided (including [docker_compose.yml](compose_example/docker-compose.yml) and [nginx.conf](compose_example/nginx/nginx.conf). Also take a look at the Dockerfiles which define how the images are built for the flask and nginx services/containers.
 
 You can also run the network as a daemon (in the background) by running:
 ```
