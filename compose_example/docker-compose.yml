@@ -1,14 +1,47 @@
 version: '3'
 
 services:
+# Each service here (flask and nginx) is a different container.
+# The arguments (build, environment, etc) can also be passed over the command line
+# with docker run. docker-compose allows us to define them with more 
+# consistency.
+
+
+# Services defined here all run in a network of containers which have some ability
+# to pass information between them. See expose.
 
     flask:
         build: flask
+        # tells docker-compose where to find Dockerfile for the flask
+        # container we are building. 
+        # (in this case <location of docker-compose.yml>/flask/Dockerfile)
         environment:
+        # Environment variables for the flask container.
             - PORT=8000
+            # Defines port for the flask app to run on (in container)
             - FLASK_APP=app.py
+            - PYTHONUNBUFFERED=0
+            # PYTHONUNBUFFERED makes it so that you can see python's error
+            # output in the container's logs.
         expose:
+        # The expose command makes it such that other containers in the network
+        # can see the given port of this container. In our case, nginx container
+        # can access http://flask:8000 . Expose DOES NOT reveal the port 
+        # outside of the container network. Therefore, you will not see the app
+        # running on port 8000 of your local machine (localhost:8000).
+        # Nor will you see if from your system on flask:8000. It can only be 
+        # seen by the other containers in the network.
             - 8000
-        ports:
-            - 8000:8000 
         command: flask run
+        # Overrides command in Dockerfile.
+    
+    nginx:
+        build: nginx
+        ports:
+        # Ports (unlike expose) make the container's ports accesible outside
+        # of the container network. This command allows us to see port 80 from
+        # your system. 
+            - 80:81
+           #- <system port>:<container port>
+           # In other words, map port 81 in the nginx container to port 80
+           # on the system. 
