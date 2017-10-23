@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/')
 def hitchhikers():
     # Reads lines from txt file in data volume.
-    lines = [line.rstrip('\n') for line in open('data/hitchhikers_quotes.txt')]
+    lines = [line.rstrip('\n') for line in open('hitchhikers_quotes.txt')]
 
     # Reads counter value from pkl file in data volume.
     if os.path.exists('data/counter.pkl'):

@@ -12,7 +12,7 @@ if [ -d "$network" ]; then
 fi
 mkdir $network
 
-echo "Compressing $network .\n"
+echo -e "${network} Information\n"
 
 images=$(docker images --format "{{.Repository}}" | grep "$network"_)
 volumes=$(docker volume ls --format "{{.Name}}" | grep "$network"_)
@@ -31,12 +31,12 @@ select yn in "Yes" "No"; do
     esac
 done
 
-echo "Compressing images.."
+echo "Archiving images.."
+# only get latest?
 docker save $images -o "${network}/${network}_images.tar"
-echo "Compressed images."
+echo "Archived images."
 
-echo "Compressing volumes..."
-
+echo "Archiving volumes..."
 for volume in $volumes
 do  
     docker run --rm \
@@ -45,8 +45,15 @@ do
         busybox \
         tar cvf "/backup/$volume.tar" volume
 done
-echo "Compressed volumes."
+echo "Archived volumes."
 
-echo "Compressing ${network}..."
+echo "Archiving and compressing ${network}..."
 tar cvf  "${network}.tar" ${network}
-echo "Compressed ${network}."
+gzip "${network}.tar"
+echo "Archived and Compressed ${network}."
+
+echo "Cleaning up..."
+rm -r ${network}
+echo "Cleaned."
+
+echo "Done."
