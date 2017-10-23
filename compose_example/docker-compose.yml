@@ -36,6 +36,9 @@ services:
             # Also note that it is written "- 8000". NOT "-8000".
             # Put a space after the dash for all arguments in the docker-compose
             # file or you might have issues getting it to work.
+        volumes:
+            - ./flask/data/:/home/data/
+            # declaration of named volume called data.
         command: flask run
         # Overrides command in Dockerfile.
     
@@ -49,3 +52,6 @@ services:
            #- <system port>:<container port>
            # In other words, map port 81 in the nginx container to port 80
            # on the system. 
+# Must declare all network volumes here. 
+volumes:
+    data:
