@@ -1,0 +1,6 @@
+/volume_example/data/*
+!/volume_example/data/sometext.txt
+
+tools/*
+!tools/savenetwork.sh
+!tools/loadnetwork.sh
