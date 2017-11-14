@@ -14,6 +14,9 @@ services:
            # In other words, map port 81 in the nginx container to port 80
            # on the system. 
            #
+        volumes:
+            - ./analytics.nasa.gov.pem:/etc/nginx/ssl/certificate.pem
+            - ./analytics.nasa.gov.new.key:/etc/nginx/ssl/certificate.key
         networks:
             - network1_default
             - network2_default

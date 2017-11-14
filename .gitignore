@@ -4,3 +4,6 @@
 /tools/*
 !/tools/savenetwork.sh
 !/tools/loadnetwork.sh
+
+/microservices/apps/*.key
+/microservices/apps/*.pem
