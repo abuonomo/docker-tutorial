@@ -18,8 +18,6 @@ RUN pip install -r /home/requirements.txt
 # If you were to make another image based on python which used the same requirements file, it would use the same image layer 
 # (thereby minimizing image bloat).
 
-VOLUME 
-
 CMD echo "yay docker"
 # CMD is different from RUN. CMD executes a command from in the container with the image define.
 # RUN commands are for setting up the environment. 
